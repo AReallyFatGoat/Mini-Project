@@ -50,4 +50,6 @@ public class FlipperScript : MonoBehaviour
         hinge.useMotor = true;
 
     }
+
+   
 }

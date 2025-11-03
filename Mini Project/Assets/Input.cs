@@ -109,6 +109,15 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Spring"",
+                    ""type"": ""Button"",
+                    ""id"": ""116657b1-4cb4-4578-8869-fdabfe6c5299"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -133,6 +142,17 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""action"": ""RightFlipper"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85bce650-4744-4da1-bf2d-3bdc6270f682"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Spring"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_LeftFlipper = m_Gameplay.FindAction("LeftFlipper", throwIfNotFound: true);
         m_Gameplay_RightFlipper = m_Gameplay.FindAction("RightFlipper", throwIfNotFound: true);
+        m_Gameplay_Spring = m_Gameplay.FindAction("Spring", throwIfNotFound: true);
     }
 
     ~@InputManager()
@@ -225,6 +246,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
     private readonly InputAction m_Gameplay_LeftFlipper;
     private readonly InputAction m_Gameplay_RightFlipper;
+    private readonly InputAction m_Gameplay_Spring;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -244,6 +266,10 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/RightFlipper".
         /// </summary>
         public InputAction @RightFlipper => m_Wrapper.m_Gameplay_RightFlipper;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/Spring".
+        /// </summary>
+        public InputAction @Spring => m_Wrapper.m_Gameplay_Spring;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -276,6 +302,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
             @RightFlipper.started += instance.OnRightFlipper;
             @RightFlipper.performed += instance.OnRightFlipper;
             @RightFlipper.canceled += instance.OnRightFlipper;
+            @Spring.started += instance.OnSpring;
+            @Spring.performed += instance.OnSpring;
+            @Spring.canceled += instance.OnSpring;
         }
 
         /// <summary>
@@ -293,6 +322,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
             @RightFlipper.started -= instance.OnRightFlipper;
             @RightFlipper.performed -= instance.OnRightFlipper;
             @RightFlipper.canceled -= instance.OnRightFlipper;
+            @Spring.started -= instance.OnSpring;
+            @Spring.performed -= instance.OnSpring;
+            @Spring.canceled -= instance.OnSpring;
         }
 
         /// <summary>
@@ -347,5 +379,12 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRightFlipper(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Spring" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpring(InputAction.CallbackContext context);
     }
 }
