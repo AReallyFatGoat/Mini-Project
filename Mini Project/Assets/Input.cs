@@ -118,6 +118,15 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpawnBall"",
+                    ""type"": ""Button"",
+                    ""id"": ""baee15ed-f840-47f0-a743-8f96a9e18c4d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -153,6 +162,17 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
                     ""action"": ""Spring"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e64486c0-f09a-41b1-a424-391193c297e8"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpawnBall"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         m_Gameplay_LeftFlipper = m_Gameplay.FindAction("LeftFlipper", throwIfNotFound: true);
         m_Gameplay_RightFlipper = m_Gameplay.FindAction("RightFlipper", throwIfNotFound: true);
         m_Gameplay_Spring = m_Gameplay.FindAction("Spring", throwIfNotFound: true);
+        m_Gameplay_SpawnBall = m_Gameplay.FindAction("SpawnBall", throwIfNotFound: true);
     }
 
     ~@InputManager()
@@ -247,6 +268,7 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_LeftFlipper;
     private readonly InputAction m_Gameplay_RightFlipper;
     private readonly InputAction m_Gameplay_Spring;
+    private readonly InputAction m_Gameplay_SpawnBall;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
     /// </summary>
@@ -270,6 +292,10 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Gameplay/Spring".
         /// </summary>
         public InputAction @Spring => m_Wrapper.m_Gameplay_Spring;
+        /// <summary>
+        /// Provides access to the underlying input action "Gameplay/SpawnBall".
+        /// </summary>
+        public InputAction @SpawnBall => m_Wrapper.m_Gameplay_SpawnBall;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -305,6 +331,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
             @Spring.started += instance.OnSpring;
             @Spring.performed += instance.OnSpring;
             @Spring.canceled += instance.OnSpring;
+            @SpawnBall.started += instance.OnSpawnBall;
+            @SpawnBall.performed += instance.OnSpawnBall;
+            @SpawnBall.canceled += instance.OnSpawnBall;
         }
 
         /// <summary>
@@ -325,6 +354,9 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
             @Spring.started -= instance.OnSpring;
             @Spring.performed -= instance.OnSpring;
             @Spring.canceled -= instance.OnSpring;
+            @SpawnBall.started -= instance.OnSpawnBall;
+            @SpawnBall.performed -= instance.OnSpawnBall;
+            @SpawnBall.canceled -= instance.OnSpawnBall;
         }
 
         /// <summary>
@@ -386,5 +418,12 @@ public partial class @InputManager: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSpring(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SpawnBall" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpawnBall(InputAction.CallbackContext context);
     }
 }
