@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Target
   - Bumper
+  - 100
+  - 200
+  - 500
+  - 1000
   layers:
   - Default
   - TransparentFX

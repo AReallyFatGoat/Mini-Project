@@ -20,4 +20,30 @@ public class ScoreOnHit : MonoBehaviour
                 break;
         }
     }
+
+    private void OnTriggerEnter(Collider trigger)
+    {
+        switch (trigger.tag)
+        {
+            case "100":
+                ScoreManager.Instance.AddScore(100);
+                Destroy(trigger.gameObject);
+                break;
+
+            case "200":
+                ScoreManager.Instance.AddScore(200);
+                Destroy(trigger.gameObject);
+                break;
+
+            case "500":
+                ScoreManager.Instance.AddScore(500);
+                Destroy(trigger.gameObject);
+                break;
+
+            case "1000":
+                ScoreManager.Instance.AddScore(1000);
+                Destroy(trigger.gameObject);
+                break;
+        }
+    }
 }
