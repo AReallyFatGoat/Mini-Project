@@ -27,22 +27,22 @@ public class ScoreOnHit : MonoBehaviour
         {
             case "100":
                 ScoreManager.Instance.AddScore(100);
-                Destroy(trigger.gameObject);
+                trigger.gameObject.SetActive(false);
                 break;
 
             case "200":
                 ScoreManager.Instance.AddScore(200);
-                Destroy(trigger.gameObject);
+                trigger.gameObject.SetActive(false);
                 break;
 
             case "500":
                 ScoreManager.Instance.AddScore(500);
-                Destroy(trigger.gameObject);
+                trigger.gameObject.SetActive(false);
                 break;
 
             case "1000":
                 ScoreManager.Instance.AddScore(1000);
-                Destroy(trigger.gameObject);
+                trigger.gameObject.SetActive(false);
                 break;
         }
     }

@@ -6,6 +6,9 @@ public class Pickups : MonoBehaviour
     [SerializeField] private Vector3 rotationSpeed;
     [SerializeField] private TextMeshProUGUI value;
     [SerializeField] private TextMeshProUGUI value2;
+    public float respawnTimer;
+
+
 
     private void Start()
     {
