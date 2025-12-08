@@ -6,10 +6,6 @@ public class CoinManager : MonoBehaviour
     private float[] coinTimers = new float[18];
     private float respawnTimer = 5f;
 
-    void Start()
-    {
-        
-    }
     void Update()
     {
         for (int i = 0; i < coins.Length; i++)

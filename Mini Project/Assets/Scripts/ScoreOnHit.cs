@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class ScoreOnHit : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
+
+        // this script is sort of copy and paste throughout, just using switch cases for adding different scores based on the tag of the object that the ball collides with
     {
         switch (collision.collider.tag)
         {
@@ -20,6 +22,8 @@ public class ScoreOnHit : MonoBehaviour
                 break;
         }
     }
+
+    // same idea as above, just using triggers for the coins
 
     private void OnTriggerEnter(Collider trigger)
     {

@@ -15,17 +15,14 @@ public class FlipperScript : MonoBehaviour
             hinge = GetComponent<HingeJoint>();
     }
 
-    // This function is called automatically by Unity’s Input System
-    // when the associated Input Action (e.g. LeftArrow or RightArrow) is triggered.
     public void OnFlipperPres(InputAction.CallbackContext context)
     {
-        // 'context.performed' is true when the button is pressed down
-        // 'context.canceled' will be called when the button is released
+
         bool pressed = context.performed;
 
         var motor = hinge.motor;
 
-        if (pressed)
+        if (pressed) // if the button is held down, the flipper gets flipped up using the value of the int flipspeed, using the negative value for the left flipper
         {
             if (isRightFlipper)
                 motor.targetVelocity = -flipSpeed;
@@ -35,7 +32,7 @@ public class FlipperScript : MonoBehaviour
         }
         else
         {
-            if (isRightFlipper)
+            if (isRightFlipper) // same concept as above, using an int to release the flipper when the key is no longer held, using the negative int for the left flipper
                 motor.targetVelocity = -releaseSpeed;
             else
                 motor.targetVelocity = releaseSpeed;
