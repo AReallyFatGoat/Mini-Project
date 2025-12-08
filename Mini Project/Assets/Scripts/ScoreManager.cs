@@ -20,4 +20,11 @@ public class ScoreManager : MonoBehaviour
         scoreText.text =  ("Score:" + score.ToString());
         Debug.Log("Score is: " + score);
     }
+
+    public void ResetScore()
+    {
+        score = 0;
+        scoreText.text = ("Score:" + score.ToString());
+        Debug.Log("Score is: " + score);
+    }
 }
